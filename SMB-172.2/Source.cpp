@@ -22,16 +22,7 @@ void divide(int *a, int n, int l, int h, int *b) {
 		divide(a, n, l, m, b);
 		divide(a, n, m + 1, h, b);
 		merge(a, n, l, m, h, b);
-		for (int i = l; i < m; i++) {
-			cout << a[i] << ' ';
-		}
-		cout << endl;
-		for (int i = m + 1; i < h; i++) {
-			cout << a[i] << ' ';
-		}
-		cout << endl << endl;
 	}
-	
 }
 void merge(int *a, int n, int l, int m, int h, int *b) {
 	int p1 = l, p2 = m + 1, i;
@@ -43,35 +34,50 @@ void merge(int *a, int n, int l, int m, int h, int *b) {
 			b[i] = a[p2++];
 		}
 	}
-
-	while (p1 <= m) {
+	while (p1 <= m)
+	{
 		b[i++] = a[p1++];
 	}
-	while (p2 <= h) {
+	while (p2 <= h)
+	{
 		b[i++] = a[p2++];
 	}
 
-	for (i = l; i < h; ++i) {
+	for (i = l; i < h; ++i)
+	{
 		a[i] = b[i];
 	}
 }
-
+void countSort(int *a, int n) {
+	int b[101];
+	for (int i = 0; i < 101; ++i) {
+		b[i] = 0;
+	}
+	for (int i = 0; i < n; ++i) {
+		++b[a[i]];
+	}
+	int j = 0;
+	for (int i = 0; i < 101; ++i) {
+		while (b[i] > 0) {
+			a[j] = i;
+			++j;
+			--b[i];
+		}
+	}
+}
 int main() {
 	int n;
 	cin >> n;
 
 	int *a = new int[n];
-	int *b = new int[n];
 	for (int i = 0; i < n; i++) {
 		a[i] = rand() % 100 + 1;
 		cout << a[i] << ' ';
-		b[i] = 0;
 	}
 	cout << endl;
-	//insertSort(a, n);
-	mergeSort(a, n, b);
-	for (int i = 0; i < n; i++) {
-		cout << b[i] << '\t';
+	countSort(a, n);
+	for (int i = 0; i < n; ++i) {
+		cout << a[i] << ' ';
 	}
 	cout << endl;
 	delete[] a;
