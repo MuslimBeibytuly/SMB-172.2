@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 using namespace std;
 void merge(int *a, int n, int l, int m, int h, int *b);
 void divide(int *a, int n, int l, int h, int *b);
@@ -68,14 +69,15 @@ void countSort(int *a, int n) {
 int main() {
 	int n;
 	cin >> n;
-
+	
 	int *a = new int[n];
 	for (int i = 0; i < n; i++) {
 		a[i] = rand() % 100 + 1;
 		cout << a[i] << ' ';
 	}
 	cout << endl;
-	countSort(a, n);
+	sort(a, a + n);
+
 	for (int i = 0; i < n; ++i) {
 		cout << a[i] << ' ';
 	}
