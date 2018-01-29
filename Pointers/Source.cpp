@@ -16,7 +16,7 @@ void test1() {
 int main()
 {
 	int(*a)(int);
-	void(*b[])(void) = { test1};
+	void(*b[])(void) = { test1 };
 	for (auto x : b) {
 		x();
 	}
