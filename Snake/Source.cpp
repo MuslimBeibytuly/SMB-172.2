@@ -77,42 +77,71 @@ void generateFood(Snake & snake, Food & food)
 		}
 	}
 }
+bool checkIfSnakeEatsItself(Snake & snake)
+{
+	for (int i = 1; i < snake.length; ++i) {
+		if (snake.body[0].x == snake.body[i].x && snake.body[0].y == snake.body[i].y) {
+			return true;
+		}
+	}
+	return false;
+}
 void game()
 {
 	Snake snake;
 	Food food;
-	generation(snake, food);
+	generation(snake, food); 
+	char action = 'd';
+	int dx = 1, dy = 0;
 	while (true)
 	{
 		drawEverything(snake, food);
-		char action = _getch();
+		if (_kbhit()) 
+		{
+			action = _getch();
+		}
 		switch (action)
 		{
 		case 'a':
-			snakeMove(snake, -1, 0);
+			dx = -1;
+			dy = 0;
 			break;
 		case 'w':
-			snakeMove(snake, 0, -1);
+			dx = 0;
+			dy = -1;
 			break;
 		case 's':
-			snakeMove(snake, 0, 1);
+			dx = 0;
+			dy = 1;
 			break;
 		case 'd':
-			snakeMove(snake, 1, 0);
+			dx = 1;
+			dy = 0;
 			break;
 		case 'q':
 			return;
 		default:
 			break;
 		}
+		snakeMove(snake, dx, dy);
 		if (checkIfSnakeEatsFood(snake, food))
 		{
 			snakeEat(snake, food);
 			generateFood(snake, food);
 		}
+		else 
+		{
+			if (checkIfSnakeEatsItself(snake)) 
+			{
+				break;
+			}
+		}
+		Sleep(20);
 		system("cls");
 	}
 	delete[] snake.body;
+	cout << "the end";
+	system("pause");
 }
 
 int main()
