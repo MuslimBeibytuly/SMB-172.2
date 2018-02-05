@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SMB-172.2", "SMB-172.2\SMB-172.2.vcxproj", "{9EAA7594-40AC-41AA-89B2-C858155D51AA}"
 EndProject
@@ -16,6 +16,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Spiral", "Spiral\Spiral.vcxproj", "{373C13BC-491E-465C-9F58-2ECD85386929}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Snake", "Snake\Snake.vcxproj", "{CEF3395A-2901-413E-8315-42BA7DFB855B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Strings", "Strings\Strings.vcxproj", "{68483E8D-4387-4176-8D57-261275FDCEE4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tetris", "Tetris\Tetris.vcxproj", "{3081DFBD-5A75-47E5-BE65-42C5DD76211A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,22 @@ Global
 		{CEF3395A-2901-413E-8315-42BA7DFB855B}.Release|x64.Build.0 = Release|x64
 		{CEF3395A-2901-413E-8315-42BA7DFB855B}.Release|x86.ActiveCfg = Release|Win32
 		{CEF3395A-2901-413E-8315-42BA7DFB855B}.Release|x86.Build.0 = Release|Win32
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Debug|x64.ActiveCfg = Debug|x64
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Debug|x64.Build.0 = Debug|x64
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Debug|x86.ActiveCfg = Debug|Win32
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Debug|x86.Build.0 = Debug|Win32
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Release|x64.ActiveCfg = Release|x64
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Release|x64.Build.0 = Release|x64
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Release|x86.ActiveCfg = Release|Win32
+		{68483E8D-4387-4176-8D57-261275FDCEE4}.Release|x86.Build.0 = Release|Win32
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Debug|x64.ActiveCfg = Debug|x64
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Debug|x64.Build.0 = Debug|x64
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Debug|x86.ActiveCfg = Debug|Win32
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Debug|x86.Build.0 = Debug|Win32
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Release|x64.ActiveCfg = Release|x64
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Release|x64.Build.0 = Release|x64
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Release|x86.ActiveCfg = Release|Win32
+		{3081DFBD-5A75-47E5-BE65-42C5DD76211A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

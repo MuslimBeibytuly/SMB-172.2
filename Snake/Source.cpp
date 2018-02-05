@@ -10,7 +10,7 @@ struct Point
 };
 struct Snake
 {
-	Point * body;
+	Point body[20];
 	int length;
 	char sign = '*';
 };
@@ -34,7 +34,6 @@ void drawEverything(Snake & snake, Food & food)
 }
 void generation(Snake & snake, Food & food)
 {
-	snake.body = new Point[20];
 	snake.body[0].x = 3;
 	snake.body[0].y = 3;
 	snake.length = 1;
