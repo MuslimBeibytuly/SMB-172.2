@@ -12,15 +12,17 @@ struct Figure
 {
 	Point body[4];
 	byte size;
+	int type;
 };
 struct Ground
 {
-	Point * body;
+	bool filled[10][10];
+	int groundHeight;
 	int size;
 };
 struct Wall
 {
-	Point * gates;
+	Point gates[20];
 	short size;
 };
 void draw(Point & p, char sign)
@@ -35,22 +37,22 @@ void drawEverything(Figure & f, Wall & w, Ground & g)
 	{
 		draw(f.body[i], '#');
 	}
-	for (int i = 0; i < g.size; ++i) {
-		draw(g.body[i], '#');
-	}
 	for (short i = 0; i < w.size; ++i) {
 		draw(w.gates[i], '|');
 	}
 }
 void init(Figure & f, Wall & w, Ground & g) {
 	f.body[0].x = 2;
-	f.body[0].y = 2;
+	f.body[0].y = 1;
 	f.body[1].x = 2;
-	f.body[1].y = 3;
+	f.body[1].y = 2;
 	f.body[2].x = 2;
-	f.body[2].y = 4;
-	f.size = 3;
-	g.body = new Point[1];
+	f.body[2].y = 3;
+	f.body[3].x = 2;
+	f.body[3].y = 4;
+	f.size = 4;
+	f.type = 1;
+	g.body = new Point[20];
 	g.size = 0;
 	w.size = 20;
 	for (int i = 0; i < 10; ++i) {
@@ -60,11 +62,33 @@ void init(Figure & f, Wall & w, Ground & g) {
 		w.gates[i + 10].y = i;
 	}
 }
-void move(Figure & f, int dx) {
-	for (byte i = 0; i < f.size; ++i) {
+void move(Figure & f, int dx)
+{
+	for (byte i = 0; i < f.size; ++i)
+	{
 		f.body[i].x += dx;
 		++f.body[i].y;
 	}
+}
+void rotate(Figure & f)
+{
+	switch (f.type)
+	{
+	case 1:
+		f.body[0].x--;
+		f.body[0].y++;
+		f.body[2].x++;
+		f.body[2].y--;
+		f.body[3].x += 2;
+		f.body[3].y -= 2;
+		break;
+	default:
+		break;
+	}
+}
+void landing() 
+{
+
 }
 void game()
 {
@@ -73,15 +97,16 @@ void game()
 	Ground ground;
 	bool isActive = true;
 	init(figure, wall, ground);
-	while (isActive) 
+	while (isActive)
 	{
+		system("cls");
 		drawEverything(figure, wall, ground);
 		int dx = 0;
-		if (_kbhit()) 
+		if (_kbhit())
 		{
 			dx = 0;
 			char action = _getch();
-			switch (action) 
+			switch (action)
 			{
 			case 'a':
 				dx = -1;
@@ -90,15 +115,18 @@ void game()
 				dx = 1;
 				break;
 			case 'w':
+				rotate(figure);
 				break;
 			case 's':
 				break;
 			default:
 				break;
 			}
-			move(figure, dx);
 		}
+		move(figure, dx);
+		Sleep(1000);
 	}
+	delete[] ground.body;
 }
 int main()
 {
