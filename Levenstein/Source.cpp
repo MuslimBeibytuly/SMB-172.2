@@ -83,7 +83,6 @@ int main()
 		cout << students[i].name << endl;
 	}
 	delete[] students;
-
 	system("pause");
 	return 0;
 }
