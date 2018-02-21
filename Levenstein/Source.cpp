@@ -1,8 +1,10 @@
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <math.h>
 
 using namespace std;
-int min(int, int);
+//int min(int, int);
 int findLevensteinDistance(string s1, string s2)
 {
 	int ** d = new int *[s1.length()];
@@ -26,7 +28,7 @@ int findLevensteinDistance(string s1, string s2)
 		{
 			int temp1 = min(d[i][j - 1] + 1, d[i - 1][j] + 1);
 			int temp2;
-			if (s1[i] == s2[j]) 
+			if (s1[i] == s2[j])
 			{
 				temp2 = d[i - 1][j - 1];
 			}
@@ -44,15 +46,52 @@ int findLevensteinDistance(string s1, string s2)
 	delete[] d;
 	return distance;
 }
+struct Student
+{
+	int id;
+	string name;
+	int distance;
+};
+bool compare(Student & s1, Student & s2) {
+	return s1.distance < s2.distance;
+}
 int main()
 {
-	string s1, s2;
-	cin >> s1 >> s2;
-	cout << findLevensteinDistance(s1, s2);
+	bool(*func)(Student &, Student &) = compare;
+	Student *students = new Student[5];
+	students[0].id = 0;
+	students[0].name = "Klark";
+	students[1].id = 1;
+	students[1].name = "Bruce";
+	students[2].id = 2;
+	students[2].name = "Barry";
+	students[3].id = 3;
+	students[3].name = "Diana";
+	students[4].id = 4;
+	students[4].name = "Arthur";
+
+	string s;
+	cin >> s;
+	for (int i = 0; i < 5; ++i)
+	{
+		students[i].distance = findLevensteinDistance(s, students[i].name);
+	}
+	sort(students, students + 5, func);
+
+	for (int i = 0; i < 5; ++i)
+	{
+		cout << students[i].name << endl;
+	}
+	delete[] students;
+
 	system("pause");
 	return 0;
 }
-int min(int a, int b)
-{
-	return ((a / b) * b + (b / a) * a) / (a / b + b / a);
-}
+
+//int min(int a, int b)
+//{
+//	if (a == 0) {
+//
+//	}
+//	return ((a / b) * b + (b / a) * a) / (a / b + b / a);
+//}
