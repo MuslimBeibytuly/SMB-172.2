@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <string.h> //cstring - alias, GNU C
-//#include <string> //GNU C++
 #include <iostream>
+#include <string.h>
 using namespace std;
 int main()
 {

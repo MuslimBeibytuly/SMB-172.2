@@ -1,16 +1,16 @@
-п»ї#include <iostream>
+#include <iostream>
 #include <Windows.h>
 #include <conio.h>
 #include <stdlib.h>
 using namespace std;
-
+int cnt = 0;
 struct Point
 {
 	short x, y;
 };
 struct Snake
 {
-	Point body[20];
+	Point * body;
 	int length;
 	char sign = '*';
 };
@@ -25,15 +25,16 @@ void draw(Point & p, char sign)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
 	cout << sign;
 }
-void drawEverything(Snake & s, Food & food)
+void drawEverything(Snake & snake, Food & food)
 {
-	for (int i = 0; i < s.length; ++i) {
-		draw(s.body[i], s.sign);
+	for (int i = 0; i < snake.length; ++i) {
+		draw(snake.body[i], snake.sign);
 	}
 	draw(food.body, food.sign);
 }
 void generation(Snake & snake, Food & food)
 {
+	snake.body = new Point[20];
 	snake.body[0].x = 3;
 	snake.body[0].y = 3;
 	snake.length = 1;
@@ -42,12 +43,12 @@ void generation(Snake & snake, Food & food)
 }
 void snakeMove(Snake & snake, int dx, int dy)
 {
-	//РѕСЃС‚Р°Р»СЊРЅС‹Рµ РїРѕРґС‚СЏРіРёРІР°СЋС‚СЃСЏ
+	//остальные подтягиваются
 	for (int i = snake.length; i > 0; --i) {
 		snake.body[i].x = snake.body[i - 1].x;
 		snake.body[i].y = snake.body[i - 1].y;
 	}
-	//РЅСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚ - РіРѕР»РѕРІР°
+	//нулевой элемент - голова
 	snake.body[0].x += dx;
 	snake.body[0].y += dy;
 }
@@ -55,6 +56,7 @@ bool checkIfSnakeEatsFood(Snake & snake, Food & food)
 {
 	if (snake.body[0].x == food.body.x && snake.body[0].y == food.body.y)
 	{
+
 		return true;
 	}
 	else { return false; }
@@ -66,11 +68,12 @@ void snakeEat(Snake & snake, Food & food) {
 }
 void generateFood(Snake & snake, Food & food)
 {
+	++cnt;
 	food.body.x = rand() % 20 + 5;
 	food.body.y = rand() % 20 + 5;
 	for (int i = 0; i < snake.length; ++i)
 	{
-		if (food.body.x == snake.body[i].x && food.body.y == snake.body[i].y) 
+		if (food.body.x == snake.body[i].x && food.body.y == snake.body[i].y)
 		{
 			generateFood(snake, food);
 		}
@@ -89,13 +92,13 @@ void game()
 {
 	Snake snake;
 	Food food;
-	generation(snake, food); 
+	generation(snake, food);
 	char action = 'd';
 	int dx = 1, dy = 0;
 	while (true)
 	{
 		drawEverything(snake, food);
-		if (_kbhit()) 
+		if (_kbhit())
 		{
 			action = _getch();
 		}
@@ -128,18 +131,18 @@ void game()
 			snakeEat(snake, food);
 			generateFood(snake, food);
 		}
-		else 
+		else
 		{
-			if (checkIfSnakeEatsItself(snake)) 
+			if (checkIfSnakeEatsItself(snake))
 			{
 				break;
 			}
 		}
-		Sleep(20);
+		Sleep(100);
 		system("cls");
 	}
 	delete[] snake.body;
-	cout << "the end";
+	cout << "Score: " << cnt << '\n' << "the end" << '\n';
 	system("pause");
 }
 
