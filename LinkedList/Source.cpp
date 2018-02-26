@@ -5,16 +5,16 @@ using namespace std;
 struct Node
 {
 	int value;
-	Node * next = nullptr, *prev = nullptr;
+	Node *next = nullptr, *prev = nullptr;
 };
 
 //добавление - O(n) от head
 //добавление - O(1) от tail
 struct DoubleLinkedList
 {
-	Node * head, *tail;
+	Node *head, *tail;
 };
-//void addToTail(DoubleLinkedList &, int);
+void addToTail(DoubleLinkedList &, int);
 //void deleteFromTail(DoubleLinkedList &);
 void f1() {
 	DoubleLinkedList x;
@@ -42,7 +42,7 @@ struct stack {
 	int top = 0;
 };
 void push(stack &, int);
-int pop(stack &); 
+int pop(stack &);
 int peek(stack &);
 int main()
 {
@@ -61,10 +61,21 @@ void push(stack & s, int x)
 	s.data[s.top++] = x;
 }
 
-int pop(stack & s) {
+int pop(stack & s) 
+{
 	return s.data[--s.top];
 }
 
-int peek(stack & s) {
+int peek(stack & s) 
+{
 	return s.data[s.top - 1];
+}
+
+void addToTail(DoubleLinkedList & d, int x) 
+{
+	Node a;
+	a.value = x;
+	d.tail->next = &a;
+	a.prev = d.tail;
+	d.tail = d.tail->next;
 }
