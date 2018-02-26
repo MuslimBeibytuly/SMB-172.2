@@ -8,68 +8,88 @@ struct index
 	int j;
 };
 
-int main() {
+int main() 
+{
 	int n, m;
 	cin >> n >> m;
 	int ** a = new int *[n];
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; ++i)
+	{
 		a[i] = new int[m];
 	}
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; ++i)
+	{
 		for (int j = 0; j < m; j++)
 		{
 			cin >> a[i][j];
 		}
 	}
-
-	vector<index> col;
-	for (int j = 0; j < m; ++j) {
-		int max = a[0][j];
-		index max_i = { 0, j };
-		for (int i = 0; i < n; ++i) {
-			if (a[i][j] > max) {
+	int max;
+	vector<index> maxs;
+	for (int j = 0; j < m; ++j)
+	{
+		max = a[0][j];
+		for (int i = 0; i < n; ++i)
+		{
+			if (a[i][j] > max)
+			{
 				max = a[i][j];
-				max_i = { i, j };
 			}
 		}
-		col.push_back(max_i);
+		for (int i = 0; i < n; ++i)
+		{
+			if (a[i][j] == max)
+			{
+				maxs.push_back({ i, j });
+			}
+		}
 	}
-	vector<index> row;
-	for (int i = 0; i < n; ++i) {
-		int min = a[i][0];
-		index min_i = { i, 0 };
-		for (int j = 0; j < m; ++j) {
-			if (a[i][j] < min) {
+	int min;
+	vector<index> mins;
+	for (int i = 0; i < n; ++i)
+	{
+		min = a[i][0];
+		for (int j = 0; j < m; ++j)
+		{
+			if (a[i][j] < min)
+			{
 				min = a[i][j];
-				min_i = { i, j };
 			}
 		}
-		row.push_back(min_i);
+		for (int j = 0; j < m; ++j)
+		{
+			if (a[i][j] == min)
+			{
+				mins.push_back({ i, j });
+			}
+		}
 	}
 	vector<index> res;
-	for (int x = 0; x < col.size(); ++x)
+	for (int x = 0; x < maxs.size(); ++x)
 	{
-		for (int y = 0; y < row.size(); ++y)
+		for (int y = 0; y < mins.size(); ++y)
 		{
-			if (col[x].i == row[y].i && col[x].j == row[y].j)
+			if (maxs[x].i == mins[y].i && maxs[x].j == mins[y].j)
 			{
-				res.push_back({ col[x].i + 1, col[x].j + 1 });
+				res.push_back(maxs[x]);
 			}
 		}
 	}
-	if (res.empty()) {
+	if (res.empty())
+	{
 		cout << 0;
 	}
-	else {
-		for (int x = 0; x < res.size(); ++x) {
-			cout << res[x].i << ' ' << res[x].j << endl;
+	else
+	{
+		for (int x = 0; x < res.size(); ++x)
+		{
+			cout << res[x].i + 1<< ' ' << res[x].j + 1 << ' ';
 		}
 	}
-
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; ++i)
+	{
 		delete[] a[i];
 	}
 	delete[] a;
-	system("pause");
 	return 0;
 }
