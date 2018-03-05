@@ -72,9 +72,32 @@ int f3() {
 	system("pause");
 	return 0;
 }
+int f4() {
+	int n, m;
+	cin >> n >> m;
+	int **a = new int*[n];
+	for (int i = 0; i < n; ++i) {
+		a[i] = new int[m];
+	}
+	fill2DArray(a, n, m);
+	for (int i = 0; i < n; ++i)
+	{
+		for (int j = 0; j < m; ++j)
+		{
+			cout << a[i][j] << '\t';
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < n; ++i) {
+		delete[] a[i];
+	}
+	delete[] a;
+	system("pause");
+	return 0;
+}
 int main()
 {
-	return 0;
+	return f4();
 }
 void fillArray(int *a, int n)
 {
@@ -91,9 +114,7 @@ void fill2DArray(int **a, int n, int m)
 		for (int j = 0; j < m; ++j)
 		{
 			a[i][j] = rand() % 31 + 30;
-			cout << a[i][j] << '\t';
 		}
-		cout << endl;
 	}
 }
 int findMax(int **a, int n, int m)
