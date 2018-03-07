@@ -18,7 +18,7 @@ void enqueue(int n, queue & q)
 	}
 		q.data[q.tail++] = n;
 }
-int dequeue(queue & q) 
+void dequeue(queue & q) 
 {
 	++q.head;
 }
