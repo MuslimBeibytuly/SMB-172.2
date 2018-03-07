@@ -22,9 +22,8 @@ void dequeue(queue & q)
 {
 	++q.head;
 }
+
 int main() 
 {
-	queue q;
-	enqueue(1, q);
 	return 0;
 }
