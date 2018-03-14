@@ -7,20 +7,12 @@ void findDifference()
 	//s - .srt file, d - .txt file
 	std::string s, d;
 	files >> s >> d;
-	//открываются два файла
-	std::ifstream dictionary(d);
-	std::vector<std::string> mywords, unknownwords;
-	//заполняем вектор моих слов из словаря
-	std::string word;
-	while (dictionary >> word)
-	{
-		mywords.push_back(word);
-	}
-	std::set<std::string> allwords(getSubtitles(s));
-	for (auto i : allwords) 
+	std::set<std::string> allwords(getAllWordsFromSubtitles(s)), mywords(getMyWordsFromDictionary(s));
+	std::vector<std::string> unknownwords;
+	for (std::string i : allwords)
 	{
 		bool isInMyWords = false;
-		for (auto j : mywords) 
+		for (std::string j : mywords) 
 		{
 			if (i == j) 
 			{
@@ -33,14 +25,14 @@ void findDifference()
 			unknownwords.push_back(i);
 		}
 	}
-	for (auto i : unknownwords) 
+	for (std::string i : unknownwords)
 	{
 		std::cout << i << std::endl;
 	}
 }
 
 //заполняем сет всех слов из субтитров
-std::set<std::string> getSubtitles(std::string s)
+std::set<std::string> getAllWordsFromSubtitles(std::string s)
 {
 	std::ifstream subtitles(s);
 	std::set<std::string> words;
@@ -59,6 +51,23 @@ std::set<std::string> getSubtitles(std::string s)
 	return words;
 }
 
-void translate()
+//заполняем сет моих слов из словаря
+std::set<std::string> getMyWordsFromDictionary(std::string d)
+{
+	std::ifstream dictionary(d);
+	std::string word;
+	std::set<std::string> words;
+	while (dictionary >> word)
+	{
+		words.insert(word);
+	}
+	return words;
+}
+
+void translate(std::vector<std::string> words)
+{
+}
+
+void writeResultsToFile(std::string, std::map<std::string, std::string>)
 {
 }
