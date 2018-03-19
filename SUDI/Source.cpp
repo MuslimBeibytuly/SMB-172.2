@@ -1,7 +1,6 @@
-#include "Functions.h"
-
+#include "Tests.h"
 int main() {
-	findDifference();
+	test();
 	system("pause");
 	return 0;
 }

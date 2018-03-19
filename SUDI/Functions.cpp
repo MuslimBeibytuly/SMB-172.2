@@ -12,23 +12,20 @@ void findDifference()
 	for (std::string i : allwords)
 	{
 		bool isInMyWords = false;
-		for (std::string j : mywords) 
+		for (std::string j : mywords)
 		{
-			if (i == j) 
+			if (i == j)
 			{
 				isInMyWords = true;
 				break;
 			}
 		}
-		if (!isInMyWords) 
+		if (!isInMyWords)
 		{
 			unknownwords.push_back(i);
 		}
 	}
-	for (std::string i : unknownwords)
-	{
-		std::cout << i << std::endl;
-	}
+	writeResultToFile("result.txt", translate(unknownwords));
 }
 
 //заполняем сет всех слов из субтитров
@@ -39,7 +36,7 @@ std::set<std::string> getAllWordsFromSubtitles(std::string s)
 	std::string temp;
 	while (subtitles >> temp)
 	{
-		if (!isdigit(temp[0]) && temp[0] != '-') 
+		if (!isdigit(temp[0]) && temp[0] != '-')
 		{
 			while (!temp.empty() && !isalpha(temp[temp.length() - 1]))
 			{
@@ -64,10 +61,28 @@ std::set<std::string> getMyWordsFromDictionary(std::string d)
 	return words;
 }
 
-void translate(std::vector<std::string> words)
+std::map<std::string, std::string> translate(std::vector<std::string> words)
 {
+	std::map<std::string, std::string> dictionary;
+	for (std::string word : words) 
+	{
+		dictionary.insert({ word, translateWord(word) });
+	}
+	return dictionary;
 }
 
-void writeResultsToFile(std::string, std::map<std::string, std::string>)
+std::string translateWord(std::string word)
 {
+	curlpp::Cleanup cleanup;
+
+	return std::string();
+}
+
+void writeResultToFile(std::string filename, std::map<std::string, std::string> words)
+{
+	std::ofstream out(filename);
+	for (auto key : words) 
+	{
+		out << key.first << ' ' << key.second << std::endl;
+	}
 }
