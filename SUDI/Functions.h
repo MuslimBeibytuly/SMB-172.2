@@ -5,7 +5,9 @@
 #include <iostream>
 #include <set>
 #include <map>
-#include <curlpp\cURLpp.hpp>
+#include <cpprest/http_client.h>
+using namespace web::http;                  // Common HTTP functionality
+using namespace web::http::client;          // HTTP client features
 //открыть субтитры, словарь юзера и записать не одинаковые
 void findDifference();
 std::set<std::string> getAllWordsFromSubtitles(std::string);

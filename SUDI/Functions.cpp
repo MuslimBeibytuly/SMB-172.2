@@ -73,9 +73,13 @@ std::map<std::string, std::string> translate(std::vector<std::string> words)
 
 std::string translateWord(std::string word)
 {
-	curlpp::Cleanup cleanup;
+	const char x[45] = "https://jsonplaceholder.typicode.com/posts/1";
+	http_client client(x);
 
-	return std::string();
+	http_response response;
+	// ordinary `get` request
+	response = client.request(methods::GET, "/get").get();
+	std::cout << "url: " << response.extract_json().get()[U("url")] << "\n";
 }
 
 void writeResultToFile(std::string filename, std::map<std::string, std::string> words)

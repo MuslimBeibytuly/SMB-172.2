@@ -1,6 +1,6 @@
-#include "Tests.h"
+#include "Functions.h"
 int main() {
-	test();
+	std::cout << translateWord("");
 	system("pause");
 	return 0;
 }
