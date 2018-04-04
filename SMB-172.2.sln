@@ -51,6 +51,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OOPTrial", "OOPTrial\OOPTri
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sample", "Sample\Sample.vcxproj", "{63E853F7-E5EA-4CA1-96A0-E5DB5E9C61EF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hamming", "Hamming\Hamming.vcxproj", "{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -251,6 +253,14 @@ Global
 		{63E853F7-E5EA-4CA1-96A0-E5DB5E9C61EF}.Release|x64.Build.0 = Release|x64
 		{63E853F7-E5EA-4CA1-96A0-E5DB5E9C61EF}.Release|x86.ActiveCfg = Release|Win32
 		{63E853F7-E5EA-4CA1-96A0-E5DB5E9C61EF}.Release|x86.Build.0 = Release|Win32
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Debug|x64.ActiveCfg = Debug|x64
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Debug|x64.Build.0 = Debug|x64
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Debug|x86.ActiveCfg = Debug|Win32
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Debug|x86.Build.0 = Debug|Win32
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Release|x64.ActiveCfg = Release|x64
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Release|x64.Build.0 = Release|x64
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Release|x86.ActiveCfg = Release|Win32
+		{1C30F544-CCE0-4417-A236-EB0FBF6FC5E1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

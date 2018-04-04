@@ -6,8 +6,6 @@ class Mammal
 private:
 	//state
 	int amountOfEyes;
-	char *name, *color, *form;
-public:
 	//getters and setters
 	int getAmountOfEyes();
 	void setAmountOfEyes(int _amountOfEyes);

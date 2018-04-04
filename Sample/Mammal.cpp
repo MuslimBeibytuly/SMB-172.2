@@ -6,7 +6,6 @@ Mammal::Mammal()
 {
 }
 
-
 Mammal::~Mammal()
 {
 }
@@ -14,12 +13,13 @@ Mammal::~Mammal()
 
 void Mammal::eat()
 {
-	std::cout << *name << ", I'm mammal and I eat" << std::endl;
+	std::cout << ", I'm mammal and I eat" << std::endl;
 }
 
 int Mammal::getAmountOfEyes() {
 	return amountOfEyes;
 }
+
 void Mammal::setAmountOfEyes(int _amountOfEyes)
 {
 	if (_amountOfEyes < 0)
