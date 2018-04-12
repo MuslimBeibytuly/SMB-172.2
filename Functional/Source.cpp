@@ -64,6 +64,9 @@ int sumOfList(int a[], int n) {
 
 int main()
 {
+	int x = 1, y = 0;
+	int z = x ^ y;
+	cout << z << endl;
 	system("pause");
 	return 0;
 }
